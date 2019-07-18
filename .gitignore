@@ -16,6 +16,8 @@ build/
 *.h5
 *.npy
 
+*.json
+
 #Ignore Images
 *.jpg
 *.png
