@@ -1,0 +1,16 @@
+animales
+oso
+pájaro
+gato
+vaca
+perro
+pez
+rana
+hipopótamo
+caballo
+león
+mono
+ratón
+cerdo
+oveja
+tigre

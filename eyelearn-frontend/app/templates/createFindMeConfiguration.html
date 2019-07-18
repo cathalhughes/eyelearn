@@ -1,0 +1,81 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="EyeLearn" content="">
+    <meta name="Cathal" content="">
+
+    <title>EyeLearn!</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Righteous" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/starter-template.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/navbar.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/imageSearch.css')}}" rel="stylesheet">
+
+</head>
+<nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <a class = "navbar-brand navbar-right" href="{{ url_for('user_management.logout') }}" style="float:right;">Logout</a>
+
+        <a class="navbar-brand navbar-right" href="{{ url_for('user_management.user', username=current_user.username) }}" style="float:right;">{{ current_user.username }}</a>
+
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href='/'>EyeLearn</a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href='/'>Home</a></li>            <!---  class="active" -->
+            <li><a href='/difficulty'>Play</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href="{{ url_for('user_analytics.userStats', username=current_user.username, classcode=current_user.current_class) }}">Analytics</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div class="starter-template">
+    <div class="container">
+<div class="form-group">
+  <label for="sel1">Select Item:</label>
+
+  <select class="form-control" id="sel1">
+    <option value="" disabled selected>Choose an Item to Search For</option>
+  </select>
+</div>
+</div>
+<section class="image-grid">
+    <h1>Select Images to be used in your own custom version of the Find Me Activity.</h1>
+    <h1>Use the drop down above to load images in the that category and choose the image you would like to use for your class.</h1>
+    <h1>EyeLearn will generate a template that can be used on the whiteboard or can be printed off.</h1>
+    <h1>It will also customise the game for the students so that they have to find the objects chosen by you!</h1>
+</section>
+    <form action="/saveFindMeConfiguration/{{class_id}}" method="POST" id="configForm">
+	 <input type="hidden"  name="config" value="">
+</form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{{url_for('static', filename='imageSearch.js') }}"></script>
+<script>
+    loadPageFromPreviousConfig({{config|tojson}});
+</script>

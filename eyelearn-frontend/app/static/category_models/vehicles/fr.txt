@@ -1,0 +1,11 @@
+véhicules
+avion
+vélo
+autobus
+voiture
+traversier
+hélicoptère
+moto
+taxi
+train
+camion

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dulcet-elevator-231812",
+  "private_key_id": "78e20df9c4f85350c7f120b81220ecf5002efd4f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDIJz9yVGYdzMBz\nTMwq2Pe21nifT26eCyxlz8L8nmg/RBvlqsCjzzVjmAw0EAEEUowe0vB9qlfKgSV9\nSWnND5F8YwOfL9u2wR0Cwqv60lI7mxrK37xz5gb9EWioZB3mYrz+f6DdXg0HyHYM\nj1z9BHfjRVizVP8vGoUZGJ8oreRRjhZlvFgk/o9o5Wmmtg6uf1eMRto/Le4YraXX\n1aaWMHViDRdLSa8MD7uH4a/o7zP4GaoYWnsTPgN8OMS8FFG+1J231eUYa3Q5rSNL\nJzcx3KIQyMx8xv7i5KptG7nZubG7aYb1wGWI7NH80ZWUcnBBVpJcuHDpWuPMcojE\nTorx45qXAgMBAAECggEAFWXwyAnS4wO1XX5L45bPoOn7+lg1JMtgA0B7gaNz1LO0\n4dBoCPtJo2ypfVVqrmoe1drKYDz6Zsl41xSmrYgpDynMxNOKg1bRAa8LUOT0aq/x\n5NeXn7Jrc9nNHRebBLrwpqrBaXk5HmhlioE3OUulf5Q13/JJ1+DXcu/pcCFrI/bC\nyCwSEigHAS7H+d1dNdeShIqRsh+qHLqAyZofD5tc3oTJQ0EWrkHRLfjYxNlXXBay\nhqbDmv2LtqRrJU4rMdJECVwvQhGDNjWfuuaLpuOx75ZnBf7NS1pFCNSSWiBlbFNR\niR7/p82mBWEkBqy7YFJtjT31g/HDJlEWcal66VubzQKBgQD15FuJzR/oKX8LbVvS\nwyxjDMjGW6cZupRzOteiBEMP8VdTAFgwH5dgprYFm6Wjx4xQElVyCt7SUAH5g9nT\nzE/JqIQlBM1NJnsLTPByHSz80Sg8qJzmrnRN/9h5mGw2bQrTAHFzJ4UBt0Y8yykf\nMUM68G9SviFuJfexhDEzCzsrIwKBgQDQYY8zJFR7GkkdLpRq02sOgjFufqbYl3CY\nRmbWhkGiY5+5cIu9wW3VopAGYzSxVOxToo3Sgmt6wJs05WxK56HTeHwFFjO6GAGh\nAfxKJxtKlrO0E+RoLgY0mOciH2eyDKqrZHRHLEmDGnqduJRO2a2piOmQGKc7qZOt\nQn4JhAYz/QKBgCq+Byts/J7el7bky5FXW9/b2Qqh4+oVBLkDAXioRQAAc6154dp7\no1SppfpTk/dkOH+ysCeivBjSz4UP5k1qtnPXVyEYNJe0mK7eMO2lJKzNrrDcnml6\n6bylPHvmgujzC26iJRZfSD+EHDF1HzDM32LfaHp5klYTQ3sX/3Vf/mkBAoGAFHUf\ne+PbL2K7PtQt2fb7kacSd0iT1Lu5YBm5SuJPW0PwkGIONgjhYZHeFeJzb91ofiV9\nSudm6dwy4JSNdyUabApuEonFdkWZE1eAjz8bnM0Cw3EYgWnTTiKcvmra4U4BC2aH\nS917MhXNZ+KRHNSeCgDY/T6OXHsfdmkKuqBtg3kCgYEAoXxk2l1+rE/3wjtXx/qS\n3jJtu7Df1Yypc0MzKweM5AkMli5Hmv9LQe+wYhD0NNEy2ILDyE2ElG6Wq4Ys/eCY\n5AXxmBOquj4Ba+0D2KEtOK/0mCezvUOsbMGwSm+sWNWAg8uBNzAqJQmJWXFTNqTc\njHcRp7gTqFth5qx8DzmZdaY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "eyelearntranslate@dulcet-elevator-231812.iam.gserviceaccount.com",
+  "client_id": "101407554463384605490",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eyelearntranslate%40dulcet-elevator-231812.iam.gserviceaccount.com"
+}

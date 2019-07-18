@@ -1,0 +1,6 @@
+helmet
+donut
+snake
+envelope
+lightning
+smiley_face

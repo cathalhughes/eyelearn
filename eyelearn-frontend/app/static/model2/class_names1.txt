@@ -1,0 +1,7 @@
+arm
+foot
+crayon
+hockey_stick
+ear
+cello
+diamond

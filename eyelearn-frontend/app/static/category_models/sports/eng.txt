@@ -1,0 +1,10 @@
+basketball
+boxing
+football
+golf
+horseriding
+rugby
+skiing
+swimming
+tennis
+volleyball

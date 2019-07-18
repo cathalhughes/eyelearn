@@ -1,0 +1,397 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Righteous" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <script src={{url_for('static', filename='Chart.min.js')}}></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+	<link href="{{url_for('static', filename='css/dashboards.css')}}" media="all" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/progress.css')}}" media="all" rel="stylesheet">
+
+    <style>
+  .crt_container{
+  overflow:hidden;
+  font-family:arial;
+  width:100%;
+  height:100%;
+  border:15px solid #00a5ff;
+    border-right:15px solid #0894fb;
+      border-left:15px solid #0894fb;
+  margin:auto;
+  display:table;
+  padding:25px 10px;
+  position:relative;
+}
+</style>
+
+</head>
+<body>
+
+
+<div id="printable">
+    <div class="crt_container" style="text-align:center;">
+    <div style="vertical-align:middle !important;">
+    <img src="{{url_for('static', filename='landing_images/logo.PNG')}}">
+    <h1 style="font-family:'Fredoka One', cursive; color:#00a5ff !important;">Course {{level}} Statistics For:</h1>
+    <h1 style="font-family:'Fredoka One', cursive !important;">{{username}}</h1>
+    <h1 style="font-family:'Fredoka One', cursive; color:#00a5ff !important;">Date:</h1><h1 style="font-family:'Fredoka One', cursive;">{{date}}</h1>
+    </div>
+  </div>
+    <div class="keen-dashboard">
+        <div class="crt_container">
+            <h1 style="font-family:'Fredoka One', cursive;text-align:center;">{{username}}'s Course {{level}} Stats Page 1</h1>
+		<div class="row">
+	<div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Rank in Class
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <div style="text-align:center;">
+              <h2>Your Position is:</h2>
+              <h2><span class="counter">{{rank}}</span></h2>
+              <i class="fas fa-chart-line fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+    <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Highest Scoring Activity in Class
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <div style="text-align:center;">
+              <h2>{{highest[0]}}:</h2>
+              <h2><span class="counter">{{highest[1]}}</span>% Average</h2>
+              <i class="fas fa-check fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+        </div>
+			<div class="row">
+	<div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Rank in World
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <div style="text-align:center;">
+              <h2>Your Position is:</h2>
+              <h2><span class="counter">{{worldRank}}</span></h2>
+              <i class="fas fa-globe-americas fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Lowest Scoring Activity in Class
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <div style="text-align:center;">
+            <h2>{{lowest[0]}}:</h2>
+            <h2><span class="counter">{{lowest[1]}}</span>% Average</h2>
+            <i class="fas fa-times fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+      </div>
+        </div>
+        <div class="crt_container">
+            <h1 style="font-family:'Fredoka One', cursive;text-align:center;">{{username}}'s Course {{level}} Stats Page 1</h1>
+            <div class="row">
+    <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Future Average
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <div style="text-align:center;">
+            <h2>EyeLearn Predicts:</h2>
+            <h2><span class="counter">{{dailyPredictionData}}</span>%</h2>
+              <i class="fas fa-brain fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+	</div>
+
+
+	<div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+           Progress
+          </div>
+          <div class="chart-stage" style="height:200px">
+              <div class="container" style="text-align:center;">
+				  <h2>Your Progress So Far:</h2>
+			  <ol class="progress-meter">
+				  <li class="progress-point {{css[0]}}">Course <span class="counter">1</span></li><li class="progress-point {{css[1]}}">Course <span class="counter">2</span></li><li class="progress-point {{css[2]}}">Course <span class="counter">3</span></li><li class="progress-point {{css[3]}}">Completion</li>
+			  </ol>
+				  <i class="fas fa-tasks fa-3x"></i>
+			</div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+		<div class="row">
+				 <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            New Vocabulary
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <table class="table">
+              <thead>
+                <tr>
+                    <th scope="col" style="color:#00a5ff;">English</th>
+                    <th scope="col" style="color:#00a5ff;">Translation</th>
+                </tr>
+              </thead>
+              <tbody id="vocab">
+          {% for vocab in newVocab %}
+          <tr>
+              <th scope="row">{{ vocab[0] }}</th>
+              <th scope="row">{{ vocab[1] }}</th>
+          </tr>
+        {% endfor %}
+              </tbody>
+          </table>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+			</div>
+				 <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Common Problem Words
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <table class="table" style="width:100%;margin-left:auto; margin-right:auto;" >
+              <thead>
+                <tr>
+                    <th scope="col" style="color:#00a5ff;">English</th>
+                    <th scope="col" style="color:#00a5ff;">Translation</th>
+                    <th scope="col" style="color:#00a5ff;">#</th>
+                </tr>
+              </thead>
+              <tbody id="misspelled">
+          {% for word in misspelledWords %}
+          <tr>
+              <th scope="row">{{ word[0] }}</th>
+              <th scope="row">{{ word[1] }}</th>
+              <th scope="row">{{ word[2] }}</th>
+          </tr>
+        {% endfor %}
+              </tbody>
+          </table>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+	</div>
+        </div>
+        </div>
+        <div class="crt_container">
+            <h1 style="font-family:'Fredoka One', cursive;text-align:center;">{{username}}'s Course {{level}} Stats Page 3</h1>
+		<div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Most Played Activity
+          </div>
+          <div class="chart-stage"  style="height:200px">
+            <div style="text-align:center;">
+            <h2>{{most[0]}}:</h2>
+            <h2><span class="counter">{{most[1]}}</span> Times</h2>
+            <i class="fas fa-arrow-up fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Least Played Activity;
+          </div>
+          <div class="chart-stage"  style="height:200px">
+            <div style="text-align:center;">
+            <h2>{{least[0]}}</h2>
+            <h2><span class="counter">{{least[1]}}</span> Times</h2>
+              <i class="fas fa-arrow-down fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+	</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Average Score
+          </div>
+          <div class="chart-stage" id="canvasHolder" style="height:200px">
+            <canvas id="chartProgress" style="max-width:100%;height:240px;width:588px;"></canvas>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+                <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Number Activities Played/New Word Learnt
+          </div>
+          <div class="chart-stage"  style="height:200px">
+              <div class="row">
+                <div class="col-sm-6" style="float:left;text-align:center;">
+            <h2>No. Activities</h2>
+            <h2><span class="counter">{{numActivities}}</span> Activities</h2>
+             <i class="fas fa-thumbs-up fa-3x"></i>
+            </div>
+                  <div class="col-sm-6" style="float:right;text-align:center;">
+            <h2>No. Words</h2>
+            <h2><span class="counter">{{numNewWords}}</span> Words</h2>
+              <i class="fas fa-graduation-cap fa-3x"></i>
+              </div>
+          </div>
+            </div>
+
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+	</div>
+            </div>
+
+        </div>
+
+	</div>
+</div>
+
+
+        <style type="text/css">
+@media print {
+
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+        float: left;
+   }
+   .col-sm-12 {
+        width: 100%;
+   }
+   .col-sm-11 {
+        width: 91.66666667%;
+   }
+   .col-sm-10 {
+        width: 83.33333333%;
+   }
+   .col-sm-9 {
+        width: 75%;
+   }
+   .col-sm-8 {
+        width: 66.66666667%;
+   }
+   .col-sm-7 {
+        width: 58.33333333%;
+   }
+   .col-sm-6 {
+        width: 50%;
+   }
+   .col-sm-5 {
+        width: 41.66666667%;
+   }
+   .col-sm-4 {
+        width: 33.33333333%;
+   }
+   .col-sm-3 {
+        width: 25%;
+   }
+   .col-sm-2 {
+        width: 16.66666667%;
+   }
+   .col-sm-1 {
+        width: 8.33333333%;
+   }
+
+   @page {  size: landscape;
+            margin: 0; }
+   body { margin: 1.6cm;}
+
+}
+</style>
+
+
+
+     </body>
+<script src="{{url_for('static', filename='progressPie.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+        progressPie({{average}});
+        setTimeout(function() {
+            var canvas = document.getElementById("chartProgress");
+            var canvasHolder = $('#canvasHolder').empty().html("<img src='" + canvas.toDataURL() + "'/>")
+        }, 2000);
+
+        setTimeout(function() {
+
+            var printContents = document.getElementById('printable').innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+             window.print();
+             window.close()
+        }, 2000);
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+	<script>
+
+
+
+
+	</script>
+

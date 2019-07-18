@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EyeLearn!</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/creative.css" type="text/css">
+	<link rel="stylesheet" href="static/css/custom.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<!--<script>-->
+    <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
+     <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
+     <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
+     <!--})(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
+
+     <!--ga('create', 'UA-64290485-1', 'auto');-->
+     <!--ga('send', 'pageview');-->
+
+    <!--</script>-->
+
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<a class="navbar-brand page-scroll" href="#services">Access</a>
+				<a class="navbar-brand page-scroll" href="#contact">Contact</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#screenshots">Doodle</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#keyboard">Everyday</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#mouse">Pronunciation</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#clipboard">Speech</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#apps">Objects</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#keystrokes">Tagging</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#reporting">Analytics</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#install">Get Involved</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#notes">Notes</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>EyeLearn</h1>
+                <hr>
+                <p>EyeLearn is web application that allows students to learn the basics of a new language using Machine Learning techniques.</p>
+                <a href="#screenshots" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="screenshots">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Doodle Classification</h2>
+                    <hr class="light">
+				</div>
+				<div class="col-lg-4 text-center">
+					<img src="static/landing_images/doodle.PNG" class="img-responsive" alt="">
+				</div>
+				<div class="col-lg-8 text-center">
+                    <p class="text-faded">
+						EyeLearn enables a student to learn vocabulary by drawing on the screen.
+					</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keyboard">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Finding Every Day Objects</h2>
+                    <hr class="primary">
+				</div>
+				<div class="col-lg-6 text-center">
+					<img src="static/landing_images/find.PNG" class="img-responsive" alt="">
+				</div>
+				<div class="col-lg-6 text-center">
+                    <p>
+						EyeLearn allows you to find every day objects using real-time image classification.
+					</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary" id="mouse">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Pronunciation</h2>
+                    <hr class="light">
+				</div>
+				<div class="col-lg-4 text-center">
+					<img src="static/landing_images/speech.PNG" class="img-responsive" alt="">
+				</div>
+				<div class="col-lg-8">
+					<div class="text-center">
+						<p class="text-faded">
+							EyeLearn can improve your foreign accent and pronunciation using speech recognition.
+
+						</p>
+					</div>
+				</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clipboard">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Translate Speech</h2>
+                    <hr class="primary">
+				</div>
+				<div class="col-lg-4 text-center">
+					<img src="static/landing_images/speechRecog.PNG" class="img-responsive" alt="">
+				</div>
+				<div class="col-lg-8 text-center">
+                    <p>
+						Using EyeLearn tools are available to translate your speech into the language you are learning.
+					</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary" id="apps">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Translate the World around You</h2>
+                    <hr class="light">
+				</div>
+				<div class="col-lg-4 text-center">
+					<img src="static/landing_images/hippo.PNG" class="img-responsive" alt="">
+				</div>
+				<div class="col-lg-8 text-center">
+                    <p class="text-faded">
+						EyeLearn enables a user to translate the world around them using just their smart device and Image Classification techniques.
+					</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keystrokes">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Phrase Translation & Tagging</h2>
+                    <hr class="primary">
+				</div>
+				<div class="col-lg-4 text-center">
+					<img src="static/landing_images/postagger.PNG" class="img-responsive" alt="">
+				</div>
+				<div class="col-lg-8 text-center">
+                    <p>
+						In addition to speech and object translation, a student can translate their own textual input and have it Part-Of-Speech Tagged, showing the true nature of each word.
+					</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary" id="reporting">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Analytics</h2>
+                    <hr class="light">
+                    <p class="text-faded">
+						EyeLearn has ana analytics utility which enables teachers to monitor class progression. Students can also monitor their own performance and see how they rank in the class.
+					</p>
+                </div>
+            </div>
+
+			<p>
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<img src="static/landing_images/analytics.png" class="img-responsive" alt="">
+					</div>
+				</div>
+			</p>
+		</div>
+	</section>
+
+    <section id="install">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12">
+                    <h2 class="section-heading text-center">How To Get Involved</h2>
+                    <hr class="primary">
+				</div>
+				<div class="col-lg-12 text-center">
+                    <p>
+						EyeLearn is a device-agnostic application and so it can be accessed via any type of device. It can be accessed via a mobile device, tablet or desktop. To maximise your experience whilst using the application it is recommended to use either a tablet or mobile device, however.
+					</p>
+				</div>
+			</div>
+		</div>
+    </section>
+
+    <section class="bg-primary" id="notes">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Notes</h2>
+                    <hr class="light">
+				</div>
+				<div class="col-lg-8 col-lg-offset-2">
+                    <p class="text-faded">
+						<ul class="text-faded">
+							<li>EyeLearn is a free-to-use service that aims at making learning a langugae fun and interactive.</li>
+							<li>Maximise the benefits of EyeLearn by using it in a classroom situation.</li>
+						</ul>
+					</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Use EyeLearn</h2>
+                    <hr class="primary">
+					<a href="https://www.eyelearn.club/register" id="downloadnow" class="btn btn-primary btn-xl wow tada">Register Now!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-2">
+					<img src="static/landing_images/DCU_logo.png" class="img-responsive" />
+				</div>
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+					<p>This project has been undertaken as part of a Final Year Project in Computer Applications, DCU.</p>
+				</div>
+
+			</div>
+			<div class="row">
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+					<img src="static/landing_images/people.png" class="wow bounceIn" style="width:42px;" />
+                    <p>Cathal Hughes & Cathal Gurrin</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><a href="mailto:cathal.hughes56@mail.dcu.ie">cathal.hughes56@mail.dcu.ie</a></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+	<script src="static/jquery.DOMWindow.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="static/creative.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+<link href="{{url_for('static', filename='css/cert.css')}}" rel="stylesheet">
+    <title>EyeLearn!</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+    </head>
+<div class="crt_container">
+  <div class="crt_logo">
+    <img src="{{url_for('static', filename='landing_images/logo.PNG')}}">
+  </div>
+
+
+  <div class="crt_content">
+    <h1 class="crt_title">Certificate Of Completion
+</h1>
+    <h2>This Certificate is awarded to</h2>
+    <h1 class="colorGreen crt_user">{{username}}</h1>
+
+    <h3 class="afterName">For his/her completion of an EyeLearn Course in {{classname}}
+</h3>
+
+    <h3><span class="colorGrey">Awarded on </span>{{date}}</h3>
+
+    <div class="signLeft">
+      <img src="{{url_for('static', filename='landing_images/signature.png')}}" alt="">
+      <h3>EyeLearn</h3>
+      <h3>Language Tool</h3>
+      <h3>Dublin</h3>
+    </div>
+
+  </div>
+
+    <style type="text/css">
+@media print {
+    .printCrt {
+        display :  none;
+    }
+    @page { size: portrait;}
+}
+</style>
+
+    <button class="printCrt" onclick="window.print()">Print/Save</button>
+
+</div>

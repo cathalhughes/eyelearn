@@ -1,0 +1,100 @@
+mano
+ratón
+enchufe
+bombilla
+libro
+Teléfono móvil
+teclado
+televisión
+ordenador portátil
+camisa
+pantalones
+zapato
+-----
+llave
+periódico
+plato
+calcetín
+capa
+billetera
+cama
+vaso
+reloj
+bote de basura
+sobre
+Gafas de sol
+baño
+reloj
+sombrero
+mochila
+auriculares
+monitor
+cuchara
+cuenco
+------
+bufanda
+tijeras
+gabinete
+árbol
+cerveza
+sofá
+casa
+edificio
+bicicleta
+sartén
+vino
+un pan
+impresora
+plátano
+coche
+flor
+guante
+paraguas
+bañera
+cámara
+-----
+gato
+guitarra
+perro
+naranja
+fresa
+piano
+martillo
+micrófono
+brócoli
+lápiz labial
+bloquear
+buzón
+balón de fútbol
+seta
+limón
+baloncesto
+flash
+vela
+radio
+-----
+pez
+helado
+Pizza
+pájaro
+casete
+hamburguesa
+Pancho
+papas fritas
+ramen
+Sushi
+rosquilla
+taco
+burrito
+semáforo
+autobús
+camión
+biberón
+motor de scooter
+aumentador
+jack o lantern
+-------
+papel de baño
+puerta
+toalla de papel
+proyector

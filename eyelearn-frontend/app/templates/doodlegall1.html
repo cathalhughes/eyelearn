@@ -1,0 +1,185 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="EyeLearn" content="">
+    <meta name="Cathal" content="">
+
+    <title>EyeLearn!</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Righteous" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/starter-template.css" rel="stylesheet">
+    <link href="static/css/navbar.css" rel="stylesheet">
+    <link href="static/css/doodleGallery.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.min.js"></script>
+</head>
+<nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <a class = "navbar-brand navbar-right" href="{{ url_for('user_management.logout') }}" style="float:right;">Logout</a>
+
+        <a class="navbar-brand navbar-right" href="{{ url_for('user_management.user', username=current_user.username) }}" style="float:right;">{{ current_user.username }}</a>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href='/'>EyeLearn</a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href='/'>Home</a></li>            <!---  class="active" -->
+            <li><a href='/difficulty'>Play</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href="{{ url_for('user_analytics.userStats', username=current_user.username, classcode=current_user.current_class) }}">Analytics</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div class="starter-template">
+<div class="main">
+  <div class="container">
+      <h1 class="center">Your Doodles</h1>
+    <div class="product-gallery">
+      <div class="product-photo-main">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for doodle, translation in doodles %}
+            <div class="swiper-slide">
+              <div class="swiper-zoom-container">
+                 <figure>
+                <img src="{{url_for('static', filename=doodle.location)}}" style="height:200px">
+                  <figcaption><h4>Correct Answer: {{doodle.foreign_answer}} ({{translation[0]}})</h4>
+                  <h4>Your Answer: {{doodle.foreign_guess}} ({{translation[1]}})</h4>
+                  </figcaption>
+                      </figure>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <div class="product-photos-side">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for doodle in doodles1 %}
+            <div class="swiper-slide">
+              <div class="swiper-zoom-container">
+                <img src="{{url_for('static', filename=doodle.location)}}">
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-gallery-full-screen">
+  <div class="swiper-container gallery-top">
+    <div class="swiper-wrapper">
+      {% for doodle in doodles2 %}
+      <div class="swiper-slide">
+        <div class="swiper-zoom-container">
+          <img src="{{url_for('static', filename=doodle.location)}}" draggable="false" ondragstart="return false;">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next swiper-button-white">
+      <svg fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+      </svg>
+    </div>
+    <div class="swiper-button-prev swiper-button-white">
+      <svg fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </div>
+    <div class="gallery-nav">
+      <div class="swiper-pagination"></div>
+      <ul class="gallery-menu">
+        <li class="zoom">
+          <svg class="zoom-icon-zoom-in" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            <path d="M0 0h24v24H0V0z" fill="none"/>
+            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+          </svg>
+          <svg class="zoom-icon-zoom-out" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0V0z" fill="none"/>
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM7 9h5v1H7z"/>
+          </svg>
+        </li>
+        <li class="fullscreen">
+          <svg class="fs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+          </svg>
+          <svg class="fs-icon-exit" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
+          </svg>
+        </li>
+        <li class="close">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+  .printCrt{
+  position:fixed;
+  right:10px;
+top:80px;
+z-index:999;
+  border:0px solid red;
+  background-color:#00a5ff;
+  color:white;
+  width:100PX;
+  height:50px;
+  border-radius:100px;
+  transition:all 0.3s ease;
+    font-size:18px;
+  letter-spacing:1px;
+}
+.printCrt:hover{
+  cursor:pointer;
+  background-color:#135688;
+  box-shadow:2px 2px 10px 1px rgba(0, 0, 0, 0.25);
+}
+</style>
+
+{% if canPrint %}
+<form action="/printDoodles" target="_blank" method="POST">
+      <button class="printCrt" type="submit">Print/Save</button>
+    </form>
+{% endif %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="static/doodleGallery.js"></script>

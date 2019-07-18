@@ -1,0 +1,15 @@
+ours
+oiseau
+chat
+vache
+chien
+poisson
+grenouille
+hipopotame
+cheval
+leon
+singe
+souris
+porc
+mouton
+tigre

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="EyeLearn" content="">
+    <meta name="Cathal" content="">
+
+    <title>EyeLearn!</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Righteous" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <script src={{url_for('static', filename='Chart.min.js')}}></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.3.2/holder.min.js" type="text/javascript"></script>-->
+      <!--<script>-->
+        <!--Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });-->
+      <!--</script>-->
+
+  <!-- keen-analysis@1.2.2 -->
+  <!--<script src="https://d26b395fwzu5fz.cloudfront.net/keen-analysis-1.2.2.js" type="text/javascript"></script>-->
+
+  <!-- keen-dataviz@1.1.3 -->
+  <!--<link href="https://d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.css" rel="stylesheet" />-->
+  <!--<script src="https://d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.js" type="text/javascript"></script>-->
+
+  <!-- Dashboard -->
+    <link href="{{url_for('static', filename='css/starter-template.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/navbar.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/dashboards.css')}}" rel="stylesheet">
+
+</head>
+<body class="keen-dashboard" style="padding-top: 80px;background:#fff;">
+
+  <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <a class = "navbar-brand navbar-right" href="{{ url_for('user_management.logout') }}" style="float:right;">Logout</a>
+
+        <a class="navbar-brand navbar-right" href="{{ url_for('user_management.user', username=current_user.username) }}" style="float:right;">{{ current_user.username }}</a>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href='/'>EyeLearn</a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href='/'>Home</a></li>            <!---  class="active" -->
+            <li><a href='/difficulty'>Play</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href="{{ url_for('user_analytics.userStats', username=current_user.username, classcode=current_user.current_class) }}">Analytics</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Activity Score Distribution
+          </div>
+          <div class="chart-stage">
+            <div id="grid-1-1">
+              <canvas id="myChart1" style="max-width:100%"></canvas>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Daily Averages
+          </div>
+          <div class="chart-stage">
+            <canvas id="lineChart" style="max-width:100%"></canvas>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+
+    <!--<div class="row">-->
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Activity Averages
+          </div>
+          <div class="chart-stage">
+            <canvas id="myChart2" style="max-width:100%"></canvas>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+      </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Rank in Class
+          </div>
+          <div class="chart-stage">
+            <div style="max-width:100%;height:240px;width:588px;">
+            <canvas id="rank" style="max-width:100%;height:240px;width:588px;"></canvas>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Average Score
+          </div>
+          <div class="chart-stage">
+            <canvas id="chartProgress" style="max-width:100%;height:240px;width:588px;"></canvas>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Favourite Activities
+          </div>
+          <div class="chart-stage">
+            <div style="max-width:100%;height:240px;width:588px;">
+            <canvas id="myChart" style="max-width:100%;height:240px;width:588px;"></canvas>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            New Vocab
+          </div>
+          <div class="chart-stage">
+            <div style="max-width:100%;height:240px;width:588px;">
+            <button class="btn btn-primary" id="refreshButton" onclick='updateTable({{vocabData|tojson}});'><span class="glyphicon glyphicon-refresh"></span>More Vocab</button>
+            <table class = "table" style="width:100%;margin-left:auto; margin-right:auto;" >
+              <thead>
+                <tr>
+                    <th scope="col" style="color:#00a5ff;">English</th>
+                    <th scope="col" style="color:#00a5ff;">Translation</th>
+                </tr>
+              </thead>
+              <tbody id="vocab">
+          {% for vocab in newVocab %}
+          <tr>
+              <th scope="row">{{ vocab.english }}</th>
+              <th scope="row">{{ vocab.translation }}</th>
+          </tr>
+        {% endfor %}
+              </tbody>
+          </table>
+          </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Common Character Mistakes
+          </div>
+          <div class="chart-stage">
+            <div style="max-width:100%;height:240px;width:588px;">
+            <button class="btn btn-primary" id="incorrectButton" onclick='updateIncorrectTable({{incorrectCharacterData|tojson}});'><span class="glyphicon glyphicon-refresh"></span>More Incorrect Characters</button>
+            <table class = "table" style="width:100%;margin-left:auto; margin-right:auto;" >
+              <thead>
+                <tr>
+                    <th scope="col" style="color:#00a5ff;">Correct Character</th>
+                    <th scope="col" style="color:#00a5ff;">Entered Character</th>
+                    <th scope="col" style="color:#00a5ff;">Occurrences</th>
+                </tr>
+              </thead>
+              <tbody id="incorrect">
+          {% for char in incorrectLetters %}
+          <tr>
+              <th scope="row">{{ char.correct_letter }}</th>
+              <th scope="row">{{ char.incorrect_letter }}</th>
+              <th scope="row">{{ char.count }}</th>
+          </tr>
+        {% endfor %}
+              </tbody>
+          </table>
+          </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Common Problem Words
+          </div>
+          <div class="chart-stage">
+            <div style="max-width:100%;height:240px;width:588px;">
+            <button class="btn btn-primary" id="misspelledButton" onclick='updateMisspelledTable({{misspelledWordsData|tojson}});'><span class="glyphicon glyphicon-refresh"></span>More Problem Words</button>
+            <table class = "table" style="width:100%;margin-left:auto; margin-right:auto;" >
+              <thead>
+                <tr>
+                    <th scope="col" style="color:#00a5ff;">English Word</th>
+                    <th scope="col" style="color:#00a5ff;">Translated Word</th>
+                    <th scope="col" style="color:#00a5ff;">Number of Issues</th>
+                </tr>
+              </thead>
+              <tbody id="misspelled">
+          {% for word in misspelledWords %}
+          <tr>
+              <th scope="row">{{ word.word }}</th>
+              <th scope="row">{{ word.translated_word }}</th>
+              <th scope="row">{{ word.count }}</th>
+          </tr>
+        {% endfor %}
+              </tbody>
+          </table>
+          </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    <div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Highest Scoring Activity
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+              <h2>{{highest[0]}}:</h2>
+              <h2><span class="counter">{{highest[1]}}</span>% Average</h2>
+              <i class="fas fa-check fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Lowest Scoring Activity
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+            <h2>{{lowest[0]}}:</h2>
+            <h2><span class="counter">{{lowest[1]}}</span>% Average</h2>
+            <i class="fas fa-times fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Average Prediction for tomorrow
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+            <h2>EyeLearn Predicts:</h2>
+              {% if dailyPredictionData %}
+            <h2><span class="counter">{{dailyPredictionData}}</span>%</h2>
+              {% else %}
+              <h2>EyeLearn has not yet made a prediction</h2>
+              {% endif %}
+              <i class="fas fa-brain fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--<div class="container-fluid">-->
+    <!--<p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>-->
+  <!--</div>-->
+
+
+    <script src="{{url_for('static', filename='pie.js')}}"></script>
+    <script src="{{url_for('static', filename='hist.js')}}"></script>
+    <script src="{{url_for('static', filename='bar.js')}}"></script>
+    <script src="{{url_for('static', filename='progressPie.js')}}"></script>
+    <script src="{{url_for('static', filename='rankBarChart.js')}}"></script>
+    <script src="{{url_for('static', filename='lineChart.js')}}"></script>
+    <!--<script src="{{url_for('static', filename='updateVocab.js')}}"></script>-->
+    <script type="text/javascript">
+        pie({{pieData|tojson}})
+        bar({{barData|tojson}})
+        progressPie({{average}})
+        rankBarChart({{rank|tojson}})
+        hist({{data|tojson}})
+        line({{lineData|tojson}})
+    </script>
+    <script>
+      var i = 5;
+      function updateTable(data){
+        var HTML = "";
+        var english = data.english;
+        var translation = data.translation;
+        console.log(english);
+        console.log(i);
+        var j = i + 5;
+        console.log(j);
+        while(i < j && i < english.length) {
+          HTML += "<tr><th scope='row'>" + english[i] + "</th><th scope='row'>" + translation[i] + "</th></tr>";
+          i++;
+        }
+
+        if(i >= english.length) {
+          console.log("in here");
+          i = 0;
+        }
+        document.getElementById("vocab").innerHTML = HTML;
+      }
+    </script>
+  <script>
+      var i = 5;
+      function updateIncorrectTable(data){
+        var HTML = "";
+        var correct = data.correct;
+        var incorrect = data.incorrect;
+        var count = data.counts;
+        var j = i + 5;
+        console.log(j);
+        while(i < j && i < correct.length) {
+          HTML += "<tr><th scope='row'>" + correct[i] + "</th><th scope='row'>" + incorrect[i] + "</th><th scope='row'>" + count[i] + "</th></tr>";
+          i++;
+        }
+
+        if(i >= correct.length) {
+          console.log("in here");
+          i = 0;
+        }
+        console.log(HTML);
+        document.getElementById("incorrect").innerHTML = HTML;
+      }
+    </script>
+  <script>
+      var i = 5;
+      function updateMisspelledTable(data){
+        var HTML = "";
+        var words = data.words;
+        var translated_words = data.translated_words;
+        var count = data.counts;
+        var j = i + 5;
+        console.log(j);
+        while(i < j && i < words.length) {
+          HTML += "<tr><th scope='row'>" + words[i] + "</th><th scope='row'>" + translated_words[i] + "</th><th scope='row'>" + count[i] + "</th></tr>";
+          i++;
+        }
+
+        if(i >= words.length) {
+          console.log("in here");
+          i = 0;
+        }
+        console.log(HTML);
+        document.getElementById("misspelled").innerHTML = HTML;
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src={{url_for('static', filename='jquery.counterup.min.js')}}></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+  <script>
+        jQuery(document).ready(function($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+    </script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--<script type="text/javascript" src="../../assets/js/keen-analytics.js"></script>-->
+</body>
+</html>

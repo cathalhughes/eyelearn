@@ -1,0 +1,11 @@
+vehiculos
+avión
+bicicleta
+autobús
+coche
+transportar
+helicóptero
+moto
+taxi
+entrenar
+camión

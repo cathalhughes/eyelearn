@@ -1,0 +1,148 @@
+<html lang=”en”>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Name of the app -->
+		<title>EyeLearn!</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+        <link href='https://fonts.googleapis.com/css?family=Karla:700,400|Roboto+Mono:400,300' rel='stylesheet' type='text/css'>
+
+
+
+
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
+		<!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-node"> </script>-->
+		<!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter@latest"></script>-->
+		<!--<script src='https://code.responsivevoice.org/responsivevoice.js'></script>-->
+        <script src='https://code.responsivevoice.org/1.5.4/responsivevoice.js'></script>
+		<!-- Link to main style sheet -->
+
+        <link rel="stylesheet" href="/static/css/gameview.css">
+        <link rel="stylesheet" href="static/css/camera.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            var CLASSES = {};
+            loc = 'static/find_model/classes_' + '{{language}}' + '.txt'
+
+            $.ajax({
+                url: loc,
+                dataType: 'text',
+                success: function(result) {
+                    const lst = result.split(/\n/);
+                    for (var i = 0; i < lst.length - 1; i++) {
+                        let symbol = lst[i];
+                        CLASSES[i] = symbol;
+                    }
+                    console.log(CLASSES);
+                }
+            });
+
+        </script>
+
+	</head>
+	<body>
+
+
+
+    <!-- Camera -->
+		<main id="camera">
+
+		    <!-- Camera sensor -->
+		    <canvas id="camera--sensor"></canvas>
+
+		    <!-- Camera view -->
+		    <video id="camera--view" autoplay playsinline></video>
+
+		    <!-- Camera output -->
+		    <img src="//:0" alt="" id="camera--output">
+
+            <div id="content-wrapper">
+
+
+
+
+<div id="gameview">
+    <div class="topbar">
+        <div id="topbar-text">Find: {{scramble}}</div>
+        <div id="clock" class="text-blink">
+            <div id="clock-time">00:30</div>
+        </div>
+        <div id="topbar-buttons">
+            <form method="post" action='/answer' style="display:inline;">
+            <button type="submit" name="path" value="{{path}}" class="button button-gray " id="button-skip">
+                <span class="icon icon-skip"></span>
+            </button>
+            </form>
+            <form method="get" action='/endgame' style="display:inline;">
+            <button type="sumbit" class="button button-close">
+            </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="speechbubble-wrapper">
+        <div id="machine-speechbubble">
+            <div id="machine-speechbubble-secondary"></div>
+            <div id="machine-speechbubble-primary">...</div>
+        </div>
+        <div id="machine-speechbubble-tip"></div>
+    </div>
+
+    </div>
+</div>
+
+		    <!-- Camera trigger -->
+		    <!--<button id="camera&#45;&#45;trigger">Take a picture</button>-->
+        <form id="send" action='/checkguess' method="POST" enctype='application/json'>
+        <input type="hidden" name="guess" value=""/>
+        </form>
+		</main>
+
+
+
+
+		<!-- Reference to your JavaScript file -->
+
+		<script src="static/find.js"></script>
+        <script>document.addEventListener("load", startGame('{{scramble}}', '{{answer}}', '{{language}}'));</script>
+
+         <script>
+    var timeLeft = 30;
+    var elem = document.getElementById('clock-time');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+      if (timeLeft == 0) {
+        elem.innerHTML = "<span style='color:#FF5000;'>00:00 </span>";
+        if('{{language}}' === 'fr') {
+            document.getElementById('machine-speechbubble-primary').innerHTML = "Je suis désolé, meilleure chance la prochaine fois!";
+            responsiveVoice.speak("Je suis désolé, meilleure chance la prochaine fois!", "French Female");
+
+            }
+            else if('{{language}}' === 'es') {
+            document.getElementById('machine-speechbubble-primary').innerHTML = "Lo siento, mejor suerte la próxima vez!";
+            responsiveVoice.speak("Lo siento, mejor suerte la próxima vez.!", "Spanish Male");
+
+            }
+            clearTimeout(timerId);
+            sendIncorrectGuess();
+      } else {
+        if(timeLeft < 10){
+            elem.innerHTML = "<span style='color:#FF5000;'>00:0" + timeLeft + "</span>";
+        }
+        else {
+            elem.innerHTML = '00:' + timeLeft;
+        }
+        timeLeft--;
+      }
+    }
+    </script>
+
+
+	</body>
+</html>

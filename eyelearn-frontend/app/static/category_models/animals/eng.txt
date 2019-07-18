@@ -1,0 +1,15 @@
+bear
+bird
+cat
+cow
+dog
+fish
+frog
+hippo
+horse
+lion
+monkey
+house mouse
+pig
+sheep
+tiger

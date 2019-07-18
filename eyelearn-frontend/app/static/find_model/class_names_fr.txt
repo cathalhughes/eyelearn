@@ -1,0 +1,95 @@
+main
+Souris
+prise de courant
+ampoule
+livre
+téléphone portable
+clavier
+la télé
+portable
+chemise
+un pantalon
+chaussure
+-----
+clé
+journal
+assiette
+chaussette
+manteau
+portefeuille
+lit
+tasse
+regarder
+poubelle
+enveloppe
+des lunettes de soleil
+toilette
+l'horloge
+chapeau
+sac à dos
+écouteurs
+afficher
+cuillère
+bol
+------
+écharpe
+les ciseaux
+cabinet
+arbre
+Bière
+canapé
+houser
+bâtiment
+vélo
+poêle à frire
+du vin
+pain
+imprimante
+banane
+voiture
+fleur
+gant
+parapluie
+baignoire
+caméra
+-----
+chat
+guitare
+chien
+Orange
+fraise
+piano
+marteau
+microphone
+brocoli
+rouge à lèvres
+fermer à clé
+boites aux lettres
+ballon de football
+champignon
+citron
+basketball
+lampe de poche
+bougie
+radio
+-----
+poisson
+crème glacée
+Pizza
+oiseau
+cassette
+Hamburger
+Hot-dog
+frites
+ramen
+Sushi
+Donut
+taco
+burrito
+feu de circulation
+autobus
+un camion
+biberon
+scooter de moteur
+grossissant
+citrouille d'Halloween

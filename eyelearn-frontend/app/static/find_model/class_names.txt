@@ -1,0 +1,100 @@
+hand
+mouse
+plug
+light bulb
+book
+cellphone
+keyboard
+tv
+laptop
+shirt
+pants
+shoe
+-----
+key
+newspaper
+plate
+sock
+coat
+wallet
+bed
+cup
+watch
+trash can
+envelope
+sunglasses
+toilet
+clock
+hat
+backpack
+headphones
+display
+spoon
+bowl
+------
+scarf
+scissors
+cabinet
+tree
+beer
+sofa
+houser
+building
+bicycle
+frying pan
+wine
+bread
+printer
+banana
+car
+flower
+glove
+umbrella
+bathtub
+camera
+-----
+cat
+guitar
+dog
+orange
+strawberry
+piano
+hammer
+microphone
+broccoli
+lipstick
+lock
+mailbox
+soccer ball
+mushroom
+lemon
+basketball
+flashlight
+candle
+radio
+-----
+fish
+icecream
+pizza
+bird
+cassette
+hamburger
+hotdog
+fries
+ramen
+sushi
+donut
+taco
+burrito
+traffic light
+bus
+truck
+baby bottle
+motor scooter
+magnifying
+jack o lantern
+-------
+toilet tissue
+door
+paper towel
+projector

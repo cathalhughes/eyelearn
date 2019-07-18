@@ -1,0 +1,41 @@
+# Add files names (and patterns) you want git to ignore here.
+
+# Ignore java .class files.
+*.class
+
+#ignore python compiled files
+*.pyc
+
+# Ignore compiled C/C++ files.
+*.o
+
+# Ignore everything in the build directory.
+build/
+
+#Ignore CNN models
+*.h5
+*.npy
+
+#Ignore Images
+*.jpg
+*.png
+*.PNG
+*.JPG
+*.jpeg
+!src/eyelearn-frontend/app/static/testing/
+!src/eyelearn-frontend/app/static/testing/*
+
+#.idea
+.idea/
+
+*.pem
+*.ppk
+
+#.mat .gz .zip
+*.mat
+*.gz
+*.zip
+
+node_modules/
+
+

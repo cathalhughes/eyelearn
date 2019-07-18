@@ -1,0 +1,360 @@
+
+button {
+  background: none;
+  border: 0; }
+
+button:focus {
+  outline: none; }
+
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 50px;
+  width: 47px;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+	not supported by any browser */
+  padding-top: 0;
+  padding-left: 6px;
+  padding-right: 3px;
+  padding-bottom: 18px;
+  background-repeat: no-repeat;
+  background-size: 94px 339px;
+  background-position: 0 0;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent; }
+  .button.button-close, .button.button-pink, .button.button-gray, .button.button-facebook, .button.button-twitter, .button.button-g {
+    background-image: url("/static/buttons_small.svg"); }
+  .button.button-close {
+    background-position: 0 -56px; }
+    .button.button-close:active {
+      background-position: -53px -56px; }
+  .button.button-pink {
+    background-position: 0 0; }
+    .button.button-pink:active {
+      background-position: -53px 0; }
+  .button.button-gray {
+    background-position: 0 -280px; }
+    .button.button-gray:active {
+      background-position: -53px -280px; }
+  .button.button-facebook {
+    background-position: 0 -168px; }
+    .button.button-facebook:active {
+      background-position: -53px -168px; }
+  .button.button-twitter {
+    background-position: 0 -112px; }
+    .button.button-twitter:active {
+      background-position: -53px -112px; }
+  .button.button-g {
+    background-position: 0 -224px; }
+    .button.button-g:active {
+      background-position: -53px -224px; }
+  .button.button-medium {
+    background-image: url("/static/svg/buttons_medium.svg"); }
+    .button.button-medium.button-gray {
+      background-position: 0 0; }
+      .button.button-medium.button-gray:active {
+        background-position: -200px 0; }
+  .button.en_US-toggle {
+    background-image: url("/static/svg/en_US-toggle.svg");
+    background-position: center;
+    background-size: 100%; }
+  .button.en-US-toggle {
+    background-image: url("/static/svg/en_US-toggle.svg");
+    background-position: center;
+    background-size: 100%; }
+  .button.de-toggle {
+    background-image: url("/static/svg/de-toggle.svg");
+    background-position: center;
+    background-size: 100%; }
+  .button.button-toggle {
+    height: 58px;
+    width: 200px;
+    background-size: 100%;
+    padding-top: 0;
+    padding-left: 9px;
+    padding-right: 8px; }
+  .button.button-yellow, .button.button-green, .button.button-medium-gray {
+    background-image: url("/static/svg/buttons_large.svg"); }
+  .button.button-green {
+    background-position: 0 0; }
+    .button.button-green:active {
+      background-position: -200px 0; }
+  .button.button-yellow {
+    background-position: 0 -71px; }
+    .button.button-yellow:active {
+      background-position: -200px -71px; }
+  .button:active {
+    padding-left: 3px;
+    padding-right: 9px; }
+    .button:active span {
+      position: relative;
+      top: 9px; }
+  .button.button-medium {
+    height: 58px;
+    width: 118px;
+    background-size: 400px 142px;
+    padding-top: 0;
+    padding-left: 9px;
+    padding-right: 8px; }
+    .button.button-medium:active {
+      padding-right: 12px; }
+      .button.button-medium:active span {
+        position: relative;
+        top: 8px; }
+    .button.button-medium.button-yellow.current-lang {
+      background-position: -200px -71px;
+      padding-left: 3px;
+      padding-right: 9px; }
+      .button.button-medium.button-yellow.current-lang span {
+        position: relative;
+        top: 9px; }
+  .button.button-large {
+    height: 58px;
+    width: 200px;
+    background-size: 400px 142px;
+    padding-top: 0;
+    padding-left: 9px;
+    padding-right: 8px; }
+    .button.button-large:active {
+      padding-left: 3px; }
+      .button.button-large:active span {
+        position: relative;
+        top: 8px; }
+  .button.button-drawing {
+    background-image: url("/static/svg/buttons_drawing.svg");
+    height: 140px;
+    width: 198px;
+    background-position: 0 0;
+    background-size: 400px 142px;
+    padding-top: 0px;
+    padding-left: 14px;
+    padding-right: 8px; }
+    .button.button-drawing:active {
+      background-position: -200px 0;
+      padding-right: 12px;
+      padding-left: 10px;
+      padding-top: 8px; }
+  .button .icon {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 170px 26px;
+    width: 31px;
+    height: 26px;
+    margin-left: 1px;
+    margin-top: -3px;
+    margin-right: 5px;
+    background-image: url("/static/icons.svg"); }
+    .button .icon.icon-undo {
+      background-position: 2px 0; }
+    .button .icon.icon-clear {
+      background-position: -54px 0; }
+    .button .icon.icon-skip {
+      background-position: -26px 0; }
+    .button .icon.icon-back {
+      background-position: -86px 1px; }
+  .button.button-medium span, .button.button-large span {
+    float: left; }
+    .button.button-medium span.center, .button.button-large span.center {
+      float: none; }
+  .button .tooltip {
+    position: absolute;
+    color: black;
+    text-align: left;
+    font-size: 35px; }
+  .button#button-undo .tooltip {
+    top: -56px;
+    left: -90px; }
+    .button#button-undo .tooltip .arrow-2 {
+      left: 47px;
+      top: 15px; }
+  .button#button-clear .tooltip {
+    top: -87px;
+    left: -36px; }
+    .button#button-clear .tooltip .arrow-3 {
+      left: 31px;
+      top: 25px; }
+  .button#button-skip .tooltip {
+    top: -93px;
+    left: 42px; }
+    .button#button-skip .tooltip .arrow-4 {
+      left: 10px;
+      top: 35px; }
+  .button.button-close .tooltip {
+    top: 85px;
+    left: -26px; }
+    .button.button-close .tooltip .arrow-1 {
+      left: 5px;
+      top: -40px; }
+
+
+#speechbubble-wrapper {
+  position: absolute;
+  bottom: 22px;
+  text-align: center;
+  width: 100%;
+  pointer-events: none; }
+
+#machine-speechbubble {
+  background-color: #f2f2f2;
+  min-width: 50px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding: 10px 16px; }
+  [lang="ar"] #machine-speechbubble {
+    direction: rtl; }
+  #machine-speechbubble div {
+    display: inline; }
+  #machine-speechbubble #machine-speechbubble-secondary {
+    color: #aaa; }
+  @media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #machine-speechbubble {
+      font-size: 14px; } }
+
+#machine-speechbubble-tip {
+  background-image: url("/static/objects.svg");
+  background-repeat: no-repeat;
+  background-size: 35px 30px;
+  background-position: 0px 0px;
+  width: 35px;
+  height: 30px;
+  bottom: -12px;
+  margin: 0 auto;
+  margin-top: -13px; }
+
+.popup-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  top: 0;
+  z-index: 1000; }
+  [lang="ar"] .popup-wrapper {
+    direction: rtl; }
+  .popup-wrapper .popup-box .popup-text {
+    font-size: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    padding: 0 30px; }
+  .popup-wrapper .popup-box .popup-buttons {
+    padding: 0 30px; }
+
+#gameview {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+	not supported by any browser */ }
+  #gameview .topbar {
+    background-color: #00a5ff;
+    box-shadow: 0px 5px 0px 1px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    padding: 22px 50px 22px 22px; }
+    #gameview .topbar #topbar-text {
+      color: rgba(0, 0, 0, 0.4);
+      display: inline-block; }
+      [lang="ar"] #gameview .topbar #topbar-text {
+        direction: rtl; }
+    #gameview .topbar #clock {
+      position: absolute;
+      top: 18px;
+      margin: auto auto;
+      left: 0;
+      right: 0;
+      font-family: 'Roboto Mono', monospace;
+      text-align: center; }
+      #gameview .topbar #clock #clock-time {
+        display: inline-block;
+        background-color: white;
+        padding: 4px 14px;
+        box-shadow: inset 1px 1px 0 1px rgba(0, 0, 0, 0.15); }
+      #gameview .topbar #clock.text-blink {
+        color: #00a5ff; }
+    #gameview .topbar #topbar-buttons {
+      right: 15px;
+      top: 12px;
+      position: absolute; }
+      #gameview .topbar #topbar-buttons .button {
+        vertical-align: top; }
+    @media screen and (max-height: 500px), screen and (max-width: 500px) {
+      #gameview .topbar {
+        padding: 0 0 0 0;
+        padding-top: 66px;
+        padding-bottom: 15px;
+        text-align: center; }
+        #gameview .topbar #topbar-buttons {
+          width: 100%;
+          left: 0;
+          right: 0;
+          text-align: left;
+          padding-left: 16px; }
+          #gameview .topbar #topbar-buttons .button-close {
+            position: absolute;
+            right: 32px; } }
+    @media screen and (max-height: 350px), screen and (max-width: 350px) {
+      #gameview .topbar #clock {
+        text-align: left;
+        margin-left: 20px; }
+      #gameview .topbar #topbar-buttons {
+        right: 15px;
+        top: 12px;
+        position: absolute;
+        width: initial;
+        text-align: right; }
+        #gameview .topbar #topbar-buttons .button-close {
+          position: initial;
+          right: initial; } }
+
+
+
+sup {
+  font-size: 0.6em; }
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Roboto Mono', sans-serif; }
+
+#content-wrapper {
+  position: absolute;
+  min-width: 300px;
+  min-height: 300px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+
+

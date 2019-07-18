@@ -1,0 +1,364 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EyeLearn!</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+    <link href="{{url_for('static', filename='css/stats.css')}}" media="all" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" media="all" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/dashboards.css')}}" media="all" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/progress.css')}}" media="all" rel="stylesheet">
+
+</head>
+<body>
+
+<style>
+  .printCrt{
+  position:fixed;
+  right:10px;
+top:10px;
+z-index:999;
+  border:0px solid red;
+  background-color:#00a5ff;
+  color:white;
+  width:100PX;
+  height:50px;
+  border-radius:100px;
+  transition:all 0.3s ease;
+    font-size:18px;
+  letter-spacing:1px;
+}
+.printCrt:hover{
+  cursor:pointer;
+  background-color:#135688;
+  box-shadow:2px 2px 10px 1px rgba(0, 0, 0, 0.25);
+}
+</style>
+
+<form action="/printSummary/{{class_id}}/{{username}}/{{level}}" target="_blank" method="POST">
+      <button class="printCrt" type="submit">Print/Save</button>
+    </form>
+
+<div class="card" id="capture">
+	<section class="card-info card-section">
+        <a href="{{url_for('user_management.statsFromCompletedCourses', username=username)}}"><i class="fas fa-chevron-left menu"></i></a>
+
+		<div class="avatar row">
+		</div>
+
+		<section class="user row">
+			<h1 class="user-header">
+				{{username}}
+				<h2 class="sub header">
+					Course {{level}} Statistics
+				</h2>
+			</h1>
+		</section>
+
+		<section class="statistics">
+			<article class="statistic">
+				<h4 class="statistic-title">
+					Activities Played
+				</h4>
+				<h3 class="statistic-value">
+					<span class="counter">{{numActivities}}</span>
+				</h3>
+			</article>
+
+			<article class="statistic">
+				<h4 class="statistic-title">
+					New Words Learnt
+				</h4>
+				<h3 class="statistic-value">
+					<span class="counter">{{numNewWords}}</span>
+				</h3>
+			</article>
+		</section>
+
+		<div class="dial">
+			<h2 class="dial-title">
+				<span class="counter">{{average}}</span>
+			</h2>
+			<h3 class="dial-value">
+				Avg.
+			</h3>
+		</div>
+	</section>
+	<section class="card-details card-section">
+
+		<nav class="menu">
+			<article class="menu-item menu-item-active">
+				Personal
+			</article>
+			<article class="menu-item">
+				Statistics
+			</article>
+		</nav>
+	<div class="keen-dashboard" style="background: #fff">
+		<div class="row">
+		<div class="col">
+	<div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Rank in Class
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+              <h2>Your Position is:</h2>
+              <h2><span class="counter">{{rank}}</span></h2>
+              <i class="fas fa-chart-line fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+		</div>
+		<div class="col">
+    <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Highest Scoring Activity in Class
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+              <h2>{{highest[0]}}:</h2>
+              <h2><span class="counter">{{highest[1]}}</span>% Average</h2>
+              <i class="fas fa-check fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+		</div>
+			<div class="col">
+	<div class="col-sm-6 col-md-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Rank in World
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+              <h2>Your Position is:</h2>
+              <h2><span class="counter">{{worldRank}}</span></h2>
+              <i class="fas fa-globe-americas fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col">
+      <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Lowest Scoring Activity in Class
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+            <h2>{{lowest[0]}}:</h2>
+            <h2><span class="counter">{{lowest[1]}}</span>% Average</h2>
+            <i class="fas fa-times fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+			</div>
+			<div class="col">
+    <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Future Average
+          </div>
+          <div class="chart-stage">
+            <div style="text-align:center;">
+            <h2>EyeLearn Predicts:</h2>
+            <h2><span class="counter">{{dailyPredictionData}}</span>%</h2>
+              <i class="fas fa-brain fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+	</div>
+	</div>
+
+		<div class="col">
+	<div class="col-sm-6 col-md-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+           Progress
+          </div>
+          <div class="chart-stage">
+              <div class="container" style="text-align:center;">
+				  <h2>Your Progress So Far:</h2>
+			  <ol class="progress-meter">
+				  <li class="progress-point {{css[0]}}">Course <span class="counter">1</span></li><li class="progress-point {{css[1]}}">Course <span class="counter">2</span></li><li class="progress-point {{css[2]}}">Course <span class="counter">3</span></li><li class="progress-point {{css[3]}}">Completion</li>
+			  </ol>
+				  <i class="fas fa-tasks fa-3x"></i>
+			</div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+		</div>
+		<div class="row">
+			<div class="col">
+				 <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            New Vocabulary
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <table class = "table">
+              <thead>
+                <tr>
+                    <th scope="col" style="color:#00a5ff;">English</th>
+                    <th scope="col" style="color:#00a5ff;">Translation</th>
+                </tr>
+              </thead>
+              <tbody id="vocab">
+          {% for vocab in newVocab %}
+          <tr>
+              <th scope="row">{{ vocab[0] }}</th>
+              <th scope="row">{{ vocab[1] }}</th>
+          </tr>
+        {% endfor %}
+              </tbody>
+          </table>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+			</div>
+		</div>
+			<div class="col">
+				 <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Common Problem Words
+          </div>
+          <div class="chart-stage" style="height:200px">
+            <table class = "table" style="width:100%;margin-left:auto; margin-right:auto;" >
+              <thead>
+                <tr>
+                    <th scope="col" style="color:#00a5ff;">English</th>
+                    <th scope="col" style="color:#00a5ff;">Translation</th>
+                    <th scope="col" style="color:#00a5ff;">#</th>
+                </tr>
+              </thead>
+              <tbody id="misspelled">
+          {% for word in misspelledWords %}
+          <tr>
+              <th scope="row">{{ word[0] }}</th>
+              <th scope="row">{{ word[1] }}</th>
+              <th scope="row">{{ word[2] }}</th>
+          </tr>
+        {% endfor %}
+              </tbody>
+          </table>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+	</div>
+	</div>
+		<div class="col">
+      <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Most Played Activity
+          </div>
+          <div class="chart-stage"  style="height:200px">
+            <div style="text-align:center;">
+            <h2>{{most[0]}}:</h2>
+            <h2><span class="counter">{{most[1]}}</span> Times</h2>
+            <i class="fas fa-arrow-up fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+      </div>
+			</div>
+			<div class="col">
+    <div class="col-sm-6 col-md-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Least Played Activity;
+          </div>
+          <div class="chart-stage"  style="height:200px">
+            <div style="text-align:center;">
+            <h2>{{least[0]}}</h2>
+            <h2><span class="counter">{{least[1]}}</span> Times</h2>
+              <i class="fas fa-arrow-down fa-3x"></i>
+            </div>
+          </div>
+          <div class="chart-notes">
+            <br>
+          </div>
+        </div>
+	</div>
+		</div>
+		</div>
+
+	</div>
+
+
+
+        <style type="text/css">
+@media print {
+    .printCrt {
+        display :  none;
+    }
+    body, html {
+          height:100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden;
+  }
+
+}
+</style>
+
+
+
+
+	</section>
+
+     </body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src={{url_for('static', filename='jquery.counterup.min.js')}}></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+
+	<script>
+	      $('.avatar').css('background-image', "url('{{ user.avatar(128) }}')");
+	      console.log('{{ user.avatar(128) }}');
+          jQuery(document).ready(function($) {
+              $('.counter').counterUp({
+                  delay: 10,
+                  time: 1000
+              });
+          });
+    </script>
+
+</div>

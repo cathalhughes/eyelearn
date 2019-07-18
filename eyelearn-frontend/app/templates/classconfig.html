@@ -1,0 +1,393 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EyeLearn</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Righteous" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="{{url_for('static', filename='css/drag.css')}}" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/starter-template.css')}}" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/navbar.css')}}" rel="stylesheet">
+
+
+</head>
+
+
+<nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <a class = "navbar-brand navbar-right" href="{{ url_for('user_management.logout') }}" style="float:right;">Logout</a>
+
+        <a class="navbar-brand navbar-right" href="{{ url_for('user_management.user', username=current_user.username) }}" style="float:right;">{{ current_user.username }}</a>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href='/'>EyeLearn</a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href='/'>Home</a></li>            <!---  class="active" -->
+            <li><a href='/difficulty'>Play</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href="{{ url_for('user_analytics.userStats', username=current_user.username, classcode=current_user.current_class) }}">Analytics</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div class="starter-template">
+<div class="drag-container">
+
+    <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+	<ul class="drag-list">
+		<li class="drag-column drag-column-on-hold">
+			<span class="drag-column-header">
+				<h2 style="color:#ffff;font-size:20px">Activities</h2>
+			</span>
+
+			<div class="drag-options" id="options1"></div>
+
+			<ul class="drag-inner-list" id="1">
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-sort-alpha-asc fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><span onclick="showModal($(this).parent().parent().attr('id'), $(this).next().get(0).nextSibling.nodeValue)"><i class="far fa-edit" style="position:absolute;right:10;"></i></span><br>Spelling</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-sort-numeric-asc fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Numbers</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-soccer-ball-o fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Sports</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-car fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Vehicles</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-paw fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Animals</li>
+			</ul>
+		</li>
+		<li class="drag-column drag-column-in-progress">
+			<span class="drag-column-header">
+				<h2 style="color:#ffff;font-size:20px">Course 1</h2>
+			</span>
+			<div class="drag-options" id="options2"></div>
+			<ul class="drag-inner-list" id="2">
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-comment fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><span onclick="showModal($(this).parent().parent().attr('id'), $(this).next().get(0).nextSibling.nodeValue)"><i class="far fa-edit" style="position:absolute;right:10;"></i></span></span><br>Scramble</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-volume-up fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><span onclick="showModal($(this).parent().parent().attr('id'), $(this).next().get(0).nextSibling.nodeValue)"><i class="far fa-edit" style="position:absolute;right:10;"></i></span><br>Listen Up!</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-microphone fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><span onclick="showModal($(this).parent().parent().attr('id'), $(this).next().get(0).nextSibling.nodeValue)"><i class="far fa-edit" style="position:absolute;right:10;"></i></span><br>Speak Up!</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-soccer-ball-o fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Swipe Sports</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-car fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Swipe Vehicles</li>
+			</ul>
+		</li>
+		<li class="drag-column drag-column-needs-review">
+			<span class="drag-column-header">
+				<h2 style="color:#ffff;font-size:20px">Course 2</h2>
+			</span>
+			<div class="drag-options" id="options3"></div>
+			<ul class="drag-inner-list" id="3">
+				<!--<li class="drag-item" style="text-align:center;"><i class="fas fa-laugh-beam fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Swipe Emojis</li>-->
+                <li class="drag-item" style="text-align:center;"><i class="fas fa-chalkboard-teacher fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Custom Find Me</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-paw fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Swipe Animals</li>
+				<li class="drag-item" style="text-align:center;"><i class="fas fa-signature fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Doodle</li>
+				<li class="drag-item" style="text-align:center;"><i class="far fa-hand-pointer fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><span onclick="showModal($(this).parent().parent().attr('id'), $(this).next().get(0).nextSibling.nodeValue)"><i class="far fa-edit" style="position:absolute;right:10;"></i></span></span><br>New Words</li>
+				<li class="drag-item" style="text-align:center;"><i class="fas fa-search fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Find Me</li>
+			</ul>
+		</li>
+		<li class="drag-column drag-column-approved">
+			<span class="drag-column-header">
+				<h2 style="color:#ffff;font-size:20px">Course 3</h2>
+			</span>
+			<div class="drag-options" id="options4"></div>
+			<ul class="drag-inner-list" id="4">
+				<li class="drag-item" style="text-align:center;"><i class="fas fa-walking fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><span onclick="showModal($(this).parent().parent().attr('id'), $(this).next().get(0).nextSibling.nodeValue)"><i class="far fa-edit" style="position:absolute;right:10;"></i></span><br>Doing What?</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-comments fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Speech Translator</li>
+				<li class="drag-item" style="text-align:center;"><i class="fa fa-camera fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Object Translator</li>
+				<li class="drag-item" style="text-align:center;"><i class="fas fa-tags fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Phrase Translator & Tagger</li>
+				<li class="drag-item" style="text-align:center;"><i class="far fa-hand-pointer fa-4x" style="max-width:100%;max-height:100%;color=#ffff"></i><br>Your New Words</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<button type="button" class="btn btn-primary" onclick="submitCourseConfiguration()">Submit Course Configuration</button>
+<button type="button" class="btn btn-primary" onclick="showPassingModal()">Set Passing Conditions</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="myModalLabel" style="font-family: 'Fredoka One', cursive; color:#00a5ff;">Update Vocabulary for the following activity: <span id="activity_name"></span></h1>
+      </div>
+      <div class="modal-body">
+		 <div class="group col-xs-12" id="inputs">
+    		<textarea class="form-control" rows="15" style="min-width: 100%" id="vocab" placeholder="Type/Copy in the English of each word on a new line"></textarea>
+		 </div>
+	  </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="addToData()">Submit</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="addToDataForAllActivities()">Submit For All Activities</button>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="myIncompleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" style="font-family: 'Fredoka One', cursive; color:#00a5ff;">You have to put each activity into a course!</h1>
+      </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" style="font-family: 'Fredoka One', cursive; color:#00a5ff;">You must set vocabulary for certain activities. This can be done by clicking the edit icon on the activities. This vocabulary can be changed by visiting your dashboard and clicking "Edit Configuration".</h1>
+      </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="passingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="passingLabel" style="font-family: 'Fredoka One', cursive; color:#00a5ff;">Set Unlock Conditions for each course!</h1>
+      </div>
+      <div class="modal-body">
+		 <div class="group col-xs-12">
+			 <label>Course 1:</label> <input id="course1" class="form-control" type="number" placeholder="Number of games to play to complete Course 1" />
+			 Course 2: <input id="course2" class="form-control" type="number" placeholder="Number of games to play to complete Course 2" />
+			 Course 3: <input id="course3" class="form-control" type="number" placeholder="Number of games to play to complete Course 3" />
+		 </div>
+	  </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" onclick="addUnlockConditions()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form action="/processConfiguration/{{class_id}}" method="POST" id="configForm">
+	 <input type="hidden"  name="config" value="">
+</form>
+</div>
+
+</body>
+
+<script>
+		var customisable_activities = ["Listen Up!", "Speak Up!", "Scramble", "Doing What?", "Spelling", "New Words"];
+		var course_data = {};
+		var data = {};
+		var unlock_data = {};
+		var different = true;
+		var mapping_icons = {"Classroom Items": "fas fa-glasses fa-4x",
+		                    "Custom Find Me": "fas fa-chalkboard-teacher fa-4x",
+							"Doing What?": "fas fa-walking fa-4x",
+							"Doodle": "fas fa-signature fa-4x",
+							"Find Me": "fas fa-search fa-4x",
+							"Listen Up!": "fa fa-volume-up fa-4x",
+							"New Words": "far fa-hand-pointer fa-4x",
+							"Numbers": "fa fa-sort-numeric-asc fa-4x",
+							"Object Translator": "fa fa-camera fa-4x",
+							"Phrase Translator & Tagger": "fas fa-tags fa-4x",
+							"Scramble": "fa fa-comment fa-4x",
+							"Speak Up!": "fa fa-microphone fa-4x",
+							"Speech Translator": "fa fa-comments fa-4x",
+							"Spelling": "fa fa-sort-alpha-asc fa-4x",
+							"Sports": "fa fa-soccer-ball-o fa-4x",
+							"Swipe Animals": "fa fa-paw fa-4x",
+							"Animals": "fa fa-paw fa-4x",
+							//"Swipe Emojis": "fas fa-laugh-beam fa-4x",
+							"Swipe Sports": "fa fa-soccer-ball-o fa-4x",
+							"Swipe Vehicles": "fa fa-car fa-4x",
+							"Vehicles": "fa fa-car fa-4x",
+							"Your New Words": "far fa-hand-pointer fa-4x"}
+		//var config = {'layout': {'2': ['Scramble', 'Spelling', 'Classroom', 'Listen Up!', 'Numbers', 'Sports', 'Speak Up!', 'Swipe Sports', 'Vehicles', 'Swipe Vehicles'], '3': ['Swipe Emotions', 'Swipe Animals', 'Doodle', 'New Words', 'Find Me'], '4': ['Doing What?', 'Speech Translator', 'Object Translator', 'Phrase Translator & Tagger', 'Your New Words']}, 'data': {'Listen Up!': {'a': 'b'}, 'Speak Up!': {'a': 'b'}, 'Scramble': {'a': 'b'}, 'Doing What?': {'a': 'b'}, 'Spelling': {'a': 'b'}, 'New Words': {'a': 'b'}}, 'unlock_data': {'1': '3', '2': '3', '3': '3'}}
+		createFromConfig({{config|tojson}});
+
+		function createFromConfig(config) {
+
+			if ($.isEmptyObject(config) === false) {
+				$('#1').empty();
+				var layout = config['layout'];
+				for(key in layout) {
+					$('#' + key).empty();
+					for(var i = 0; i < layout[key].length; i++) {
+						if($.inArray(layout[key][i], customisable_activities) != -1) {
+							var elem = "<li class='drag-item' style='text-align:center;'><i class='" + mapping_icons[layout[key][i]] +  "' style='max-width:100%;max-height:100%;color=#ffff'></i><span onclick='showModal($(this).parent().parent().attr(\"id\"), $(this).next().get(0).nextSibling.nodeValue)'><i class='far fa-edit' style='position:absolute;right:10;'></i></span><br>" + layout[key][i] + "</li>";
+
+						} else {
+							var elem = "<li class='drag-item' style='text-align:center;'><i class='" + mapping_icons[layout[key][i]] + "' style='max-width:100%;max-height:100%;color=#ffff'></i><br>" + layout[key][i]; + "</li>"
+						}
+						$('#' + key).append(elem);
+
+					}
+				}
+				processData(config['data']);
+				unlock_data = config['unlock_data'];
+
+			}
+
+		}
+
+		function processData(dict) {
+		    for(var key in dict) {
+		        if (!dict.hasOwnProperty(key)) continue;
+
+		        var values = [];
+		        for(var word in dict[key]) {
+		            if (!dict[key].hasOwnProperty(word)) continue;
+		            values.push(word);
+
+		        }
+		        data[key] = values;
+		    }
+		}
+
+		function showModal(col,activity) {
+			console.log(col);
+			//update modal with
+			$('#activity_name').text(activity);
+			if(activity in data) {
+				console.log("Update Modal with data");
+
+				addRowWithValues(data[activity]);
+				$('#myModal').modal('show');
+			} else {
+
+				console.log("Blank Modal")
+				$("#vocab").val('');
+				$('#myModal').modal('show');
+			}
+
+		}
+
+		function showPassingModal() {
+			if(unlock_data != {}) {
+				for(key in unlock_data) {
+					$('#course' + key).val(parseInt(unlock_data[key]));
+				}
+				$('#passingModal').modal('show');
+			} else {
+				$('#passingModal').modal('show');
+			}
+
+		}
+
+		function addRowWithValues(array) {
+			$("#vocab").val('');
+			var count = 0;
+			var str = "";
+			for (var i = 0; i < array.length; i++) {
+    			str += array[i] + "\n";
+			}
+			$("#vocab").val(str.trim());
+		}
+
+
+		function addToData() {
+			//addData to data var
+			//remove all extar inputs from Modal
+			var vocab = $('#vocab').val();
+			var values = vocab.split("\n");
+			var activityName = $('#activity_name').text();
+			data[activityName] = values;
+			console.log(data);
+			$('#vocab').val("");
+
+
+		}
+
+		function addToDataForAllActivities() {
+			//addData to data var
+			//remove all extar inputs from Modal
+			var vocab = $('#vocab').val();
+			var values = vocab.split("\n");
+			for(var i = 0; i < customisable_activities.length; i++) {
+			    data[customisable_activities[i]] = values;
+			}
+
+
+
+
+		}
+
+		function getTextFromBr(list) {
+			var array = [];
+			for(var i = 0; i < list.length; i++) {
+				array.push(list[i].nextSibling.nodeValue);
+			}
+			return array;
+		}
+
+		function submitCourseConfiguration() {
+			var activities = getTextFromBr($('#1').children().find("br"));
+			if (activities.length > 0) {
+				$('#myIncompleteModal').modal('show');
+				return;
+			}
+			if (Object.keys(data) < 6) {
+				$('#dataModal').modal('show');
+				return;
+			}
+			if (Object.keys(unlock_data).length < 3) {
+				$('#passingModal').modal('show');
+				return;
+			}
+			var course_one = getTextFromBr($('#2').children().find("br"));
+			var course_two = getTextFromBr($('#3').children().find("br"));
+			var course_three = getTextFromBr($('#4').children().find("br"));
+			layout = {2:course_one, 3:course_two, 4:course_three};
+			course_data["layout"] = layout;
+			course_data["data"] = data;
+			course_data["unlock_data"] = unlock_data;
+			console.log(course_data);
+
+			var formInfo = document.forms['configForm'];
+            formInfo.config.value = JSON.stringify(course_data);
+			$('#configForm').trigger('submit');
+		}
+
+		function addUnlockConditions() {
+			unlock_data[1] = $('#course1').val();
+			unlock_data[2] = $('#course2').val();
+			unlock_data[3] = $('#course3').val();
+			console.log(unlock_data);
+		}
+
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
+<script src="{{url_for('static', filename='drag.js')}}"></script>
+
+
+

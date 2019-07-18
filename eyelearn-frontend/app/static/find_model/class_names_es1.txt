@@ -1,0 +1,12 @@
+mano
+ratón
+teclado
+mochila
+proyector
+puerta
+Teléfono móvil
+camisa
+pantalones
+zapato
+llave
+televisión

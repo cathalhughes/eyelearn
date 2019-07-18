@@ -1,0 +1,10 @@
+meat
+carrot
+potato
+cheese
+chocolate
+broccoli
+pork
+butter
+cake
+bread

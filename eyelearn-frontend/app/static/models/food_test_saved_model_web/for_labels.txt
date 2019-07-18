@@ -1,0 +1,11 @@
+nourriture
+viande
+carotte
+Patate
+fromage
+Chocolat
+brocoli
+porc
+beurre
+gâteau
+pain

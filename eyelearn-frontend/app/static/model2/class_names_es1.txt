@@ -1,0 +1,7 @@
+brazo
+pie
+lápiz_de_color
+palo_de_hockey
+oreja
+violonchelo
+diamante

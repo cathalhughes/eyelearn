@@ -1,0 +1,12 @@
+hand
+mouse
+keyboard
+backpack
+projector
+door
+cellphone
+shirt
+pants
+shoe
+key
+tv

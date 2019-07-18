@@ -1,0 +1,6 @@
+#emailaddress {
+	border-color: #ed431f;
+}
+#emailaddress:focus {
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(237,67,31,.6);
+}
