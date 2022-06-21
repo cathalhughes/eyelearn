@@ -1,6 +1,6 @@
 Flask_Cors==3.0.6
 Flask_Testing==0.7.1
-numpy==1.15.2
+numpy==1.22.0
 SpeechRecognition==3.8.1
 matplotlib==2.1.2
 Flask==0.12.2
